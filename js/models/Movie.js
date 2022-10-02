@@ -1,5 +1,4 @@
-class Movie {
-  constructor(data) {
+constructor(data) {
     this._duration = data.duration;
     this._picture = data.picture;
     this._released_in = data.released_in;
@@ -30,3 +29,4 @@ class Movie {
       : this._title["en"];
   }
 }
+

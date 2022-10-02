@@ -1,1 +1,3 @@
-# DRAFT-utilisez-des-design-patterns-en-javascript
+# Exercice dans le cadre de la formation Openclassrooms
+
+# Utilisez-des-design-patterns-en-javascript

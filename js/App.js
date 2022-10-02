@@ -1,19 +1,28 @@
 class App {
   constructor() {
     this.$moviesWrapper = document.querySelector(".movies-wrapper");
-    this.moviesApi = new MovieApi("data/new-movie-data.json");
+    this.oldMoviesApi = new MovieApi("data/old-movie-data.json");
+    this.newMoviesApi = new MovieApi("data/new-movie-data.json");
   }
 
   async main() {
-    const moviesData = await this.moviesApi.getMovies();
+    // Ici je récupère mes films de mon fichier old-movie-data.json
+    const oldMoviesData = await this.oldMoviesApi.getMovies();
+    const newMoviesData = await this.newMoviesApi.getMovies();
 
-    moviesData
-      .map((movie) => new Movie(movie))
-      .forEach((movie) => {
-        console.log(movie);
-        const Template = new MovieCard(movie);
-        this.$moviesWrapper.appendChild(Template.createMovieCard());
-      });
+    const OldMovies = oldMoviesData.map(
+      (movie) => new MoviesFactory(movie, "oldApi")
+    );
+    const NewMovies = newMoviesData.map(
+      (movie) => new MoviesFactory(movie, "newApi")
+    );
+
+    const FullMovies = OldMovies.concat(NewMovies);
+
+    FullMovies.forEach((movie) => {
+      const Template = new MovieCard(movie);
+      this.$moviesWrapper.appendChild(Template.createMovieCard());
+    });
   }
 }
 
