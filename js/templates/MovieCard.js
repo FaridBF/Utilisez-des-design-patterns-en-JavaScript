@@ -1,18 +1,17 @@
 class MovieCard {
-    constructor(movie) {
-        this._movie = movie
-    }
+  constructor(movie) {
+    this._movie = movie;
+  }
 
-    createMovieCard() {
-        const $wrapper = document.createElement('div')
-        $wrapper.classList.add('movie-card-wrapper')
+  createMovieCard() {
+    const $wrapper = document.createElement("div");
+    $wrapper.classList.add("movie-card-wrapper");
 
-        const movieCard = `
+    const movieCard = `
             <div class="movie-thumbnail center">
                 <img
                     alt="${this._movie.title}"
-                    src="${this._movie.thumbnail}"
-                />
+                    src="assets/${this._movie._picture}"                />
             </div>
             <h3 class="fs-16 center">${this._movie.title}</h3>
             <p class="fs-14 center">
@@ -20,9 +19,9 @@ class MovieCard {
                 -
                 <span>${this._movie.duration}</span>
             </p>
-        `
-        
-        $wrapper.innerHTML = movieCard
-        return $wrapper
-    }
+        `;
+
+    $wrapper.innerHTML = movieCard;
+    return $wrapper;
+  }
 }
